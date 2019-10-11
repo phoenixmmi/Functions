@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 //#define FACTORIAL
-#//define POWER
+//#define POWER
+#define fibonachi_1
 
 int factorial(int n)
 {
@@ -29,20 +30,9 @@ double power(double a, int n)
 	return 1 / (a*power(a, n + 1));*/
 	return (n == 0) ? 1 : (n > 0) ? a * power(a, n - 1) : 1 / a * power(a, n + 1);
 }
-void fibonachi(int a)
-{
-	static int d;
-	if (d > a)return;
-	static int b = 0;
-	static int c = 1;
-	d = b + c;
-	if (d == 1)cout << 0 << "\t" << 1 << "\t";
-	cout << d << "\t";
-	b = c;
-	c = d;
-	fibonachi(a);
 
-}
+void fibonachi(int n, int a = 0, int b = 1);
+
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -58,4 +48,23 @@ void main()
 	cout << "¬ведите показатель степени: "; cin >> n;
 	cout << a << " ^ " << n << " = " << power(a, n) << endl;
 #endif
+#ifdef fibonachi_1
+	int n;
+	cout << "¬ведите числo, до кторого нужно вывести р€д ‘ибоначчи: "; 
+	cin >> n;
+	//fibonachi(n, 0, 1);
+	fibonachi(n);
+
+#endif
+}
+
+void fibonachi(int n, int a, int b)// default parameters
+//function doesn't take N arguments
+{
+	if (a > n)
+	{
+		return;
+	}
+	cout << a << "\t";
+	fibonachi(n, b, a + b);
 }
