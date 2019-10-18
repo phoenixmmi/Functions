@@ -13,7 +13,7 @@ void main()
 	char Field[SIZE] = {}; //Игровое поле 
 	PrintField(Field, SIZE, '0');
 	cout << "Еще разочек? (y || Y)";
-	if (_getch() == 'y')main();
+	if (_getch() == 'y' || _getch() == 'Y')main();
 }
 void PrintField(char Field[], const int n, char Player)
 {
@@ -89,6 +89,11 @@ else if (Field[2] == Field[5] && Field[5] == Field[8] && Field[8] != 0) game_ove
 	 if (game_over)
 	 {
 		 cout << "Player " << Player << " wins."<< endl;
+		 return;
+	 }
+	 if (Field[0] != 0 && Field[1] != 0 && Field[2] != 0 && Field[3] != 0 && Field[4] != 0 && Field[5] != 0 && Field[6] != 0 && Field[7] != 0 && Field[8] != 0)
+	 {
+		 cout << "Ничья" << endl;
 		 return;
 	 }
 	 if(Player == 'X')Move(Field, n, '0');
